@@ -1,42 +1,17 @@
 import React from 'react'
 import './App.css'
+import Header from "./components/Header/Header"
+import Navbar from "./components/Navbar/Navbar"
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
     return (
         <div className='app-wrapper'>
-            <header className='header'>
-                <img src="" alt=""/>
-            </header>
+            <Header/>
 
-            <nav className='app-navigation'>
-                <ul>
-                    <li>
-                        <a href="#">Profile</a>
-                    </li>
-                    <li>
-                        <a href="#">Messages</a>
-                    </li>
-                    <li>
-                        <a href="#">News</a>
-                    </li>
-                    <li>
-                        <a href="#">Music</a>
-                    </li>
-                    <li>
-                        <a href="#">Settings</a>
-                    </li>
-                </ul>
-            </nav>
+            <Navbar/>
 
-            <section className='main-content'>
-                <div>banner</div>
-                <div>ava + desc</div>
-                <ul>
-                    <li>post1</li>
-                    <li>post2</li>
-                </ul>
-            </section>
-
+            <Profile/>
         </div>
     )
 }
