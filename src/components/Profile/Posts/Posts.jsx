@@ -9,7 +9,8 @@ const Posts = () => {
                 <button>Add Post</button>
             </li>
 
-            <Post />
+            <Post message='Hi. How are you' likes='25' />
+            <Post message='Fine thnx' likes='23' />
         </ul>
     )
 }
