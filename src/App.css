@@ -1,15 +1,26 @@
+.appBody {
+    background: #fff;
+    width: 100%;
+    min-height: 100vh;
+}
+
 .app-wrapper {
-    width: 1200px;
-    margin: 0 auto;
     display: grid;
-
     grid-template-areas: "h h" "n c";
-
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: 80px 1fr;
     grid-template-columns: 2fr 10fr;
+    min-height: 100vh;
+    margin: 0 auto;
 }
 
 .appWrapperContent {
     grid-area: c;
-    background-color: antiquewhite;
+    background: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }

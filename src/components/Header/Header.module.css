@@ -1,8 +1,12 @@
 .header {
     grid-area: h;
-    background-color: black;
+    background-color: rgba(0,8,12,.1);
 }
 
-.header img {
-    width: 20px;
+.header {
+    display: flex;
+}
+
+.appLogo img {
+    width: 220px;
 }

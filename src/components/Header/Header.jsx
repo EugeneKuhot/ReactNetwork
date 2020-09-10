@@ -4,7 +4,9 @@ import s from './Header.module.css'
 const Header = () => {
     return (
         <header className={s.header}>
-            <img src="" alt=""/>
+            <div className={s.appLogo}>
+                <img src="https://thumbs.gfycat.com/ColorlessImpoliteCattle-max-1mb.gif" alt=""/>
+            </div>
         </header>
     )
 }

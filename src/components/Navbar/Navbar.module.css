@@ -1,11 +1,42 @@
 .navigation {
     grid-area: n;
-    background-color: aqua;
+    background-color: rgba(0,8,12,.1);
 }
 .item {
-    color: brown;
+    padding: 10px 10px 10px 35px;
 }
 
-.active {
-    color: gold;
+.item a {
+    position: relative;
+    color: #606060;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.item a:hover {
+    color: #000;
+}
+
+.item a::before {
+    width: 0;
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    border-bottom: 2px solid #000;
+    transition: .3s;
+    opacity: 0;
+}
+
+.item a.active {
+    color: #000;
+}
+
+.item a.active::before {
+    width: 100%;
+    left: 0;
+    transition: all .3s ease-in-out;
+    opacity: 1;
 }

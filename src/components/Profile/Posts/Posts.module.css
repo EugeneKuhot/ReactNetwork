@@ -1,0 +1,46 @@
+.textareaWrap {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+.textareaWrap textarea {
+    resize: none;
+    width: 500px;
+}
+
+.textareaWrap button {
+    width: 100px;
+    margin-top: 10px;
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .8;
+    position: relative;
+}
+
+.textareaWrap button::before {
+    width: 0;
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    border-bottom: 2px solid #000;
+    transition: .3s;
+    opacity: 0;
+}
+
+.textareaWrap button:hover::before {
+    width: 100%;
+    left: 0;
+    transition: all .3s ease-in-out;
+    opacity: 1;
+}
+
+.textareaWrap button:hover {
+    opacity: 1;
+}

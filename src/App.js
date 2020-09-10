@@ -12,15 +12,17 @@ import Settings from "./components/Settings/Settings";
 const App = () => {
     return (
         <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div className='appWrapperContent'>
-                    <Route path='/profile' component={Profile}/>
-                    <Route path='/dialogs' component={Dialogs}/>
-                    <Route path='/news' component={News}/>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/settings' component={Settings}/>
+            <div className='appBody'>
+                <div className='app-wrapper'>
+                    <Header/>
+                    <Navbar/>
+                    <div className='appWrapperContent'>
+                        <Route path='/profile' component={Profile}/>
+                        <Route path='/dialogs' component={Dialogs}/>
+                        <Route path='/news' component={News}/>
+                        <Route path='/music' component={Music}/>
+                        <Route path='/settings' component={Settings}/>
+                    </div>
                 </div>
             </div>
         </BrowserRouter>
