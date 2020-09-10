@@ -2,7 +2,6 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
-import Post from "../Profile/Posts/Post/Post";
 
 
 const Dialogs = (props) => {
@@ -11,7 +10,7 @@ const Dialogs = (props) => {
         .map(d => <DialogsItem name={d.name} id={d.id}/>)
 
     let messagesElements = props.messagesData
-        .map(m => <Post message={m.textMessage}/>)
+        .map(m => <MessageItem textMessage={m.textMessage}/>)
 
     return (
         <div className={s.dialogsPage}>
