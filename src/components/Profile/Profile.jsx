@@ -3,11 +3,12 @@ import s from './Profile.module.css'
 import Posts from "./Posts/Posts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = () => {
+
+const Profile = (props) => {
     return (
         <section className={s.profileWrap}>
-            <ProfileInfo/>
-            <Posts/>
+            <ProfileInfo />
+            <Posts postsData={props.postsData}/>
         </section>
     )
 }

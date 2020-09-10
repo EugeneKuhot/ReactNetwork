@@ -7,22 +7,10 @@ import Post from "../Profile/Posts/Post/Post";
 
 const Dialogs = (props) => {
 
-    let dialogsData = [
-        {id: 1, name: 'Vasya'},
-        {id: 2, name: 'Ivan'},
-        {id: 3, name: 'Petr'},
-        {id: 4, name: 'Grisha'}
-    ]
-
-    let messagesData = [
-        {id: 1, textMessage: 'Hi'},
-        {id: 2, textMessage: 'Where are you'}
-    ]
-
-    let dialogsElements = dialogsData
+    let dialogsElements = props.dialogsData
         .map(d => <DialogsItem name={d.name} id={d.id}/>)
 
-    let messagesElements = messagesData
+    let messagesElements = props.messagesData
         .map(m => <Post message={m.textMessage}/>)
 
     return (
