@@ -1,6 +1,7 @@
 import React, {createRef} from 'react'
 import Post from './Post/Post'
 import s from './Posts.module.css'
+import {addPostAC, updateNewPostTextAC} from "../../Redux/state";
 
 const Posts = (props) => {
 
@@ -10,12 +11,12 @@ const Posts = (props) => {
     let newPost = React.createRef()
 
     let addPost = () => {
-        props.dispatch({type: 'ADD-POST'})
+        props.dispatch(addPostAC())
     }
 
     let onPostChange = () => {
         let text = newPost.current.value
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+        props.dispatch(updateNewPostTextAC(text))
     }
 
 
