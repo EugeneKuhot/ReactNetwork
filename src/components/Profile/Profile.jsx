@@ -8,7 +8,7 @@ const Profile = (props) => {
     return (
         <section className={s.profileWrap}>
             <ProfileInfo />
-            <Posts postsData={props.postsData}/>
+            <Posts postsData={props.postsData} addPost={props.addPost}/>
         </section>
     )
 }

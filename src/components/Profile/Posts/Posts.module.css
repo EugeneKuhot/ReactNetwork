@@ -8,6 +8,7 @@
 .textareaWrap textarea {
     resize: none;
     width: 500px;
+    padding: 5px 10px;
 }
 
 .textareaWrap button {
@@ -34,13 +35,16 @@
     opacity: 0;
 }
 
-.textareaWrap button:hover::before {
+.textareaWrap button:hover::before,
+.textareaWrap button:focus::before {
     width: 100%;
     left: 0;
     transition: all .3s ease-in-out;
     opacity: 1;
 }
 
-.textareaWrap button:hover {
+.textareaWrap button:hover,
+.textareaWrap button:focus {
     opacity: 1;
+    outline: none;
 }

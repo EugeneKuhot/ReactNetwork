@@ -1,7 +1,52 @@
-.dialogItem {
-    color: red;
+.dialogItem:not(:last-child) {
+    margin-bottom: 15px;
 }
 
-.active {
-    color: gold;
+.dialogItem img {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.dialogItem a {
+    color: #606060;
+    text-decoration: none;
+    margin-left: 15px;
+    letter-spacing: 1px;
+
+}
+
+.dialogItem a.active {
+    color: #000;
+}
+
+.dialogItem a::before {
+    width: 0;
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    border-bottom: 2px solid #000;
+    transition: .3s;
+    opacity: 0;
+}
+
+.dialogItem a.active::before {
+    width: 100%;
+    left: 0;
+    transition: all .3s ease-in-out;
+    opacity: 1;
+}
+
+.dialogItem a {
+    position: relative;
+    color: #606060;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.dialogItem a:hover {
+    color: #000;
 }

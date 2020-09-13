@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .appBody {
     background: #fff;
     width: 100%;
