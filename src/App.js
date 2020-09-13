@@ -8,6 +8,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import Footer from "./components/Footer/Footer";
 
 
 const App = (props) => {
@@ -21,7 +22,9 @@ const App = (props) => {
                     <div className='appWrapperContent'>
                         <Route path='/profile' render={() =>
                             <Profile postsData={props.state.profilePage.postsData}
-                                     addPost={props.addPost}/>
+                                     newPostText = {props.state.profilePage.newPostText}
+                                     addPost={props.addPost}
+                                     updatePostText={props.updatePostText}/>
                         }/>
                         <Route path='/dialogs' render={() =>
                             <Dialogs dialogsData={props.state.messagesPage.dialogsData}
@@ -31,6 +34,8 @@ const App = (props) => {
                         <Route path='/music' component={Music}/>
                         <Route path='/settings' component={Settings}/>
                     </div>
+
+                    <Footer/>
                 </div>
             </div>
         </BrowserRouter>

@@ -10,8 +10,8 @@
 
 .app-wrapper {
     display: grid;
-    grid-template-areas: "h h" "n c";
-    grid-template-rows: 80px 1fr;
+    grid-template-areas: "h h" "n c" "f f";
+    grid-template-rows: 80px 1fr 80px;
     grid-template-columns: 2fr 10fr;
     min-height: 100vh;
     margin: 0 auto;
@@ -21,7 +21,6 @@
     grid-area: c;
     background: #fff;
     padding: 30px;
-    box-sizing: border-box;
 }
 
 ul {

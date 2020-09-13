@@ -1,9 +1,6 @@
 .header {
     grid-area: h;
     background-color: rgba(0,8,12,.1);
-}
-
-.header {
     display: flex;
 }
 

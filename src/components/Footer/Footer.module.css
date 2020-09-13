@@ -1,0 +1,5 @@
+.pageFooter {
+    grid-area: f;
+    background-color: #2d2d2d;
+    display: flex;
+}

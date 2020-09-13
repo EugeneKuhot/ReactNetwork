@@ -10,14 +10,19 @@ const Posts = (props) => {
     let newPost = React.createRef()
 
     let addPost = () => {
-        let text = newPost.current.value
-        props.addPost(text)
+        props.addPost()
     }
+
+    let onPostChange = () => {
+        let text = newPost.current.value
+        props.updatePostText(text)
+    }
+
 
     return (
         <ul>
             <li className={s.textareaWrap}>
-                <textarea ref={newPost} name="" id="" cols="30" rows="10"></textarea>
+                <textarea ref={newPost} name="" id="" cols="30" rows="10" onChange={onPostChange} value={props.newPostText}/>
                 <button onClick = { addPost }>Add Post</button>
             </li>
 
