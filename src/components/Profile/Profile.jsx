@@ -9,9 +9,8 @@ const Profile = (props) => {
         <section className={s.profileWrap}>
             <ProfileInfo />
             <Posts postsData={props.postsData}
-                   addPost={props.addPost}
                    newPostText={props.newPostText}
-                   updatePostText={props.updatePostText}/>
+                   dispatch={props.dispatch}/>
         </section>
     )
 }
