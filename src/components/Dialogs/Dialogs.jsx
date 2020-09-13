@@ -1,22 +1,22 @@
 import React from 'react'
 import s from './Dialogs.module.css'
-import DialogsItem from "./DialogsItem/DialogsItem";
-import MessageItem from "./MessageItem/MessageItem";
+import DialogsItem from "./DialogsItem/DialogsItem"
+import MessageItem from "./MessageItem/MessageItem"
+import {sendMessageAC, updateNewMessageTextAC} from "../Redux/state";
 
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsData
-        .map(d => <DialogsItem name={d.name} id={d.id} avatar={d.avatar}/>)
-
-    let messagesElements = props.messagesData
-        .map(m => <MessageItem textMessage={m.textMessage}/>)
-
-    let newMessage =  React.createRef()
+    let dialogsElements = props.dialogsData.map(d => <DialogsItem name={d.name} id={d.id} avatar={d.avatar}/>)
+    let messagesElements = props.messagesData.map(m => <MessageItem textMessage={m.textMessage}/>)
 
     let sendMessage = () => {
-        let textMessage = newMessage.current.value
-        alert(textMessage)
+        props.dispatch(sendMessageAC())
+    }
+
+    let onMessageChange = (e) => {
+        let text = e.target.value
+        props.dispatch(updateNewMessageTextAC(text))
     }
 
     return (
@@ -28,7 +28,10 @@ const Dialogs = (props) => {
                 {messagesElements}
 
                 <li className={s.textareaWrap}>
-                    <textarea ref={newMessage} name="" id="" cols="30" rows="10"></textarea>
+                    <textarea placeholder='Enter your message...'
+                              value={props.newMessageText}
+                              onChange={onMessageChange}
+                              name="" id="" cols="30" rows="10"></textarea>
                     <button onClick={sendMessage}>Send</button>
                 </li>
             </ul>

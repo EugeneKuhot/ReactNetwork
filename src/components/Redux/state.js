@@ -1,6 +1,9 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
+const SEND_MESSAGE = 'SEND-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+
 
 let store = {
     _state: {
@@ -25,7 +28,7 @@ let store = {
                 {
                     id: 3,
                     name: 'Petr',
-                    avatar: 'https://lh3.googleusercontent.com/proxy/Vyr2Tu5daj2Jwz9C-CqwHSQHEYE33EAPTcoMlvhPFfwGzwBT8JYoSf-zOIxVKYX9-eMrxbupPMmNCA-XhKQfs_e3vg1V_pH4DtKF6a0tIUCSTK8GyhoxUxP75M67CpDhhBtaR7OkTQqoTyanvw'
+                    avatar: 'https://posterspy.com/wp-content/uploads/2014/07/10247352_10200924919284968_2948106246049733614_n.png'
                 },
                 {
                     id: 4,
@@ -36,7 +39,9 @@ let store = {
             messagesData: [
                 {id: 1, textMessage: 'Hi'},
                 {id: 2, textMessage: 'Where are you'}
-            ]
+            ],
+
+            newMessageText: ''
         }
     },
     _callSubscriber() {
@@ -63,12 +68,26 @@ let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(this._state)
+        }else if (action.type === SEND_MESSAGE) {
+            let newMessage = {
+                id: 3,
+                textMessage: this._state.messagesPage.newMessageText,
+            }
+            this._state.messagesPage.messagesData.push(newMessage)
+            this._state.messagesPage.newMessageText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.messagesPage.newMessageText = action.newText
+            this._callSubscriber(this._state)
         }
     }
 }
 
 export const addPostAC = () => ({ type: ADD_POST })
 export const updateNewPostTextAC = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+
+export const sendMessageAC = () => ({ type: SEND_MESSAGE })
+export const updateNewMessageTextAC = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text})
 
 export default store
 window.store = store
