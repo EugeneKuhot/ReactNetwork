@@ -1,7 +1,7 @@
 import React, {createRef} from 'react'
 import Post from './Post/Post'
 import s from './Posts.module.css'
-import {addPostAC, updateNewPostTextAC} from "../../Redux/state";
+import {addPostAC, updateNewPostTextAC} from "../../Redux/profileReducer";
 
 const Posts = (props) => {
 
