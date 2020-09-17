@@ -11,12 +11,12 @@ const Dialogs = (props) => {
     let messagesElements = props.messagesData.map(m => <MessageItem textMessage={m.textMessage}/>)
 
     let sendMessage = () => {
-        props.dispatch(sendMessageAC())
+        props.sendMessage()
     }
 
     let onMessageChange = (e) => {
         let text = e.target.value
-        props.dispatch(updateNewMessageTextAC(text))
+        props.onMessageChange(text)
     }
 
     return (

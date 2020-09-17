@@ -1,7 +1,6 @@
 import React, {createRef} from 'react'
 import Post from './Post/Post'
 import s from './Posts.module.css'
-import {addPostAC, updateNewPostTextAC} from "../../Redux/profileReducer";
 
 const Posts = (props) => {
 
@@ -11,20 +10,21 @@ const Posts = (props) => {
     let newPost = React.createRef()
 
     let addPost = () => {
-        props.dispatch(addPostAC())
+        props.addPost()
     }
 
     let onPostChange = () => {
         let text = newPost.current.value
-        props.dispatch(updateNewPostTextAC(text))
+        props.updateNewPostTextAC(text)
     }
 
 
     return (
         <ul>
             <li className={s.textareaWrap}>
-                <textarea ref={newPost} name="" id="" cols="30" rows="10" onChange={onPostChange} value={props.newPostText}/>
-                <button onClick = { addPost }>Add Post</button>
+                <textarea ref={newPost} name="" id="" cols="30" rows="10" onChange={onPostChange}
+                          value={props.newPostText}/>
+                <button onClick={addPost}>Add Post</button>
             </li>
 
             {postElements}
