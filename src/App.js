@@ -3,12 +3,11 @@ import './App.css'
 import Header from "./components/Header/Header"
 import Navbar from "./components/Navbar/Navbar"
 import Profile from "./components/Profile/Profile"
-import Dialogs from "./components/Dialogs/Dialogs"
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Footer from "./components/Footer/Footer";
-import Route from "react-router-dom/es/Route";
+import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
@@ -20,10 +19,10 @@ const App = (props) => {
                 <Navbar/>
                 <div className='appWrapperContent'>
                     <Route path='/profile' render={() =>
-                        <Profile />
+                        <Profile/>
                     }/>
                     <Route path='/dialogs' render={() =>
-                        <DialogsContainer />
+                        <DialogsContainer/>
                     }/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
