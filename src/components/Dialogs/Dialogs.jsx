@@ -7,8 +7,8 @@ import {sendMessageAC, updateNewMessageTextAC} from "../Redux/dialogsReducer"
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsData.map(d => <DialogsItem name={d.name} id={d.id} avatar={d.avatar}/>)
-    let messagesElements = props.messagesData.map(m => <MessageItem textMessage={m.textMessage}/>)
+    let dialogsElements = props.dialogsData.map(d => <DialogsItem name={d.name} id={d.id} key={d.id} avatar={d.avatar}/>)
+    let messagesElements = props.messagesData.map(m => <MessageItem textMessage={m.textMessage} key={m.id}/>)
 
     let sendMessage = () => {
         props.sendMessage()
