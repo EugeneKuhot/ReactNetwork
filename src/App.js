@@ -20,10 +20,10 @@ const App = (props) => {
                 <Navbar/>
                 <div className='appWrapperContent'>
                     <Route path='/profile' render={() =>
-                        <Profile store={props.store}/>
+                        <Profile />
                     }/>
                     <Route path='/dialogs' render={() =>
-                        <DialogsContainer store={props.store}/>
+                        <DialogsContainer />
                     }/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
