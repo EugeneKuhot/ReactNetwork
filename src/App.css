@@ -27,3 +27,7 @@ ul {
     list-style: none;
     padding: 0;
 }
+
+::-webkit-scrollbar{width:9px;background-color:#fff}
+::-webkit-scrollbar-thumb{border-radius:10px;background-color:#2d2d2d}
+::-webkit-scrollbar-track{border-radius:10px;background-color:#fff}

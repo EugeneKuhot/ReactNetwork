@@ -2,7 +2,6 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem"
 import MessageItem from "./MessageItem/MessageItem"
-import {sendMessageAC, updateNewMessageTextAC} from "../Redux/dialogsReducer"
 
 
 const Dialogs = (props) => {
@@ -11,7 +10,9 @@ const Dialogs = (props) => {
     let messagesElements = props.messagesData.map(m => <MessageItem textMessage={m.textMessage} key={m.id}/>)
 
     let sendMessage = () => {
-        props.sendMessage()
+        if (props.newMessageText !== '') {
+            props.sendMessage()
+        }
     }
 
     let onMessageChange = (e) => {
