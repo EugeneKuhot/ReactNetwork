@@ -1,3 +1,11 @@
 .avatar {
     max-width: 200px;
 }
+
+.pagginationList {
+    display: flex;
+}
+
+li.active button {
+    transform: scale(1.5);
+}
