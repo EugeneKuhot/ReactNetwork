@@ -1,72 +1,52 @@
 import React from "react";
-import userAvatar from "../../assets/images/user.jpg";
 import s from "./Users.module.css";
-import * as axios from "axios";
+import userAvatar from "../../assets/images/user.jpg";
 
-class Users extends React.Component {
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count${this.props.pageLimit}`)
-            .then(response => {
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount)
-            })
+const Users = (props) => {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageLimit)
+    let pages = []
+
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
     }
 
-    onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber)
+    return (
+        <section>
+            <ul className={s.usersList}>
+                {props.users.map(u => <li key={u.id} className={s.userItem}>
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count${this.props.pageLimit}`)
-            .then(response => {this.props.setUsers(response.data.items)})
-    }
+                    <div>
+                        <img src={u.photos.small !== null ? u.photos.small : userAvatar} className={s.avatar}
+                             alt=""/>
 
-    render() {
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageLimit)
+                        <span>{u.name}</span>
+                        <span>{u.status}</span>
 
-        let pages = []
+                        {u.follow
+                            ? <button onClick={() => {
+                                props.unfollow(u.id)
+                            }}>Unfollow</button>
+                            : <button onClick={() => {
+                                props.follow(u.id)
+                            }}>Follow</button>}
+                    </div>
 
-        for (let i=1; i<=pagesCount; i++) {
-            pages.push(i)
-        }
+                </li>)}
+            </ul>
 
-
-
-        return (
-            <section>
-                <ul className={s.pagginationList}>
-                    {
-                        pages.map(p => {
-                            return <li className={this.props.currentPage === p && s.active} key={p} onClick={() => {this.onPageChanged(p)}}>
-                                <button>{p}</button>
-                            </li>
-                        })
-                    }
-                </ul>
-
-                <ul>
-                    {this.props.users.map(u => <li key={u.id}>
-                        <div>
-                            <img src={u.photos.small !== null ? u.photos.small : userAvatar} className={s.avatar}
-                                 alt=""/>
-                            {u.follow
-                                ? <button onClick={() => {
-                                    this.props.unfollow(u.id)
-                                }}>Unfollow</button>
-                                : <button onClick={() => {
-                                    this.props.follow(u.id)
-                                }}>Follow</button>}
-
-                        </div>
-
-                        <div>
-                            <span>{u.name}</span>
-                            <span>{u.status}</span>
-                        </div>
-                    </li>)}
-                </ul>
-            </section>
-
-        )
-    }
+            <ul className={s.pagginationList}>
+                {
+                    pages.map(p => {
+                        return <li className={props.currentPage === p ? s.active : ``} key={p} onClick={() => {
+                            props.onPageChanged(p)
+                        }}>
+                            <button>{p}</button>
+                        </li>
+                    })
+                }
+            </ul>
+        </section>
+    )
 }
 
 export default Users

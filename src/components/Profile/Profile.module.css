@@ -4,7 +4,6 @@
 
 .profileBackground {
     height: 400px;
-    background:
-            url('https://wallup.net/wp-content/uploads/2016/03/10/333453-nature-landscape-mist-lake-mountain-trees-snowy_peak-sunrise-water-reflection-panoramas.jpg') no-repeat fixed;
+    background: url("../../assets/images/png/waterfall.png");
     background-size: cover;
 }

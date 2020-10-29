@@ -1,11 +1,79 @@
 .avatar {
-    max-width: 200px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 .pagginationList {
     display: flex;
+    width: 50vw;
+    overflow-x: scroll;
+    margin: auto;
+}
+
+.usersList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+.usersList li {
+    width: 35%;
+    height: 270px;
+    margin-bottom: 15px;
+}
+
+.usersList li div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    padding: 15px 0;
+    box-shadow: 0px 0px 10px #dbdbdb;
+}
+
+button {
+    outline: none;
+}
+
+.pagginationList button {
+    background: transparent;
+    border: none;
+    color: rgba(0, 0, 0, .6);
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.pagginationList button:hover {
+    color: rgba(0, 0, 0, 1);
+    transition: all .3s ease;
 }
 
 li.active button {
-    transform: scale(1.5);
+    border-bottom: 2px solid #000;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1);
+}
+
+.userItem button {
+    width: 200px;
+    height: 55px;
+    padding: 0;
+    border: none;
+    background: url("../../assets/images/png/button.png") no-repeat 0 -20px;
+    background-size: 200px 75px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all .3s ease;
+}
+
+.userItem button:hover {
+    background-position: 0 0;
+    opacity: .8;
+    transition: all .3s ease;
 }

@@ -3,7 +3,6 @@
 }
 
 .appBody {
-    background: url("");
     width: 100%;
     min-height: 100vh;
 }
@@ -15,12 +14,12 @@
     grid-template-columns: 2fr 10fr;
     min-height: 100vh;
     margin: 0 auto;
+    background-image: linear-gradient(to right, #e5e6e6, #fff);
 }
 
 .appWrapperContent {
     grid-area: c;
-    background: #fff;
-    padding: 30px;
+    padding: 20px 30px;
 }
 
 ul {
