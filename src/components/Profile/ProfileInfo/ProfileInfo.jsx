@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
                 <img src={props.profile.photos.large} alt=""/>
             </div>
            <div>
-               <h3>About me: {props.profile.aboutMe}</h3>
+               <h3>{props.profile.aboutMe}</h3>
 
                <ul>
                    <li>Facebook: {props.profile.contacts.facebook}</li>
