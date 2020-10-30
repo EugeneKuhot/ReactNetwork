@@ -3,7 +3,15 @@
 }
 
 .profileBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 400px;
     background: url("../../assets/images/png/waterfall.png");
     background-size: cover;
+}
+
+.profileBackground img {
+    border-radius: 50%;
+    filter: grayscale(0.3);
 }

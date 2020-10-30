@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Users.module.css";
 import userAvatar from "../../assets/images/user.jpg";
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageLimit)
@@ -14,11 +15,11 @@ const Users = (props) => {
         <section>
             <ul className={s.usersList}>
                 {props.users.map(u => <li key={u.id} className={s.userItem}>
-
                     <div>
-                        <img src={u.photos.small !== null ? u.photos.small : userAvatar} className={s.avatar}
-                             alt=""/>
-
+                        <NavLink to={'/profile/' + u.id}>
+                            <img src={u.photos.small !== null ? u.photos.small : userAvatar} className={s.avatar}
+                                 alt=""/>
+                        </NavLink>
                         <span>{u.name}</span>
                         <span>{u.status}</span>
 
