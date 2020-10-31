@@ -24,7 +24,7 @@ const Users = (props) => {
                         <span>{u.name}</span>
                         <span>{u.status}</span>
 
-                        {u.follow
+                        {u.followed
                             ? <button disabled={props.followingInProgress.some(id => id === u.id)}  onClick={() => {
                                 props.toggleFollowingProgress(true, u.id)
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
@@ -46,7 +46,7 @@ const Users = (props) => {
                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                     withCredentials: true,
                                     headers: {
-                                        'API-KEY': '38f6e9f2-1b51-441e-92a2-145c5d6036b5'
+                                        "API-KEY": "38f6e9f2-1b51-441e-92a2-145c5d6036b5"
                                     }
                                 })
                                     .then(response => {
