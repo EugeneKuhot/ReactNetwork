@@ -1,6 +1,6 @@
-import HeaderAPIComponent from "./HeaderAPIComponent";
-import {connect} from "react-redux";
-import {setAuth} from "../../Redux/authReducer";
+import HeaderAPIComponent from "./HeaderAPIComponent"
+import {connect} from "react-redux"
+import {setAuth} from "../../Redux/authReducer"
 
 
 let mapStateToProps = (state) => {

@@ -1,6 +1,6 @@
 import React from "react"
-import Profile from "./Profile";
-import * as axios from "axios";
+import Profile from "./Profile"
+import * as axios from "axios"
 
 
 class ProfileAPIComponent extends React.Component {

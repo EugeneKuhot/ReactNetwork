@@ -1,8 +1,8 @@
-import React from "react";
-import s from "./Users.module.css";
-import userAvatar from "../../assets/images/user.jpg";
-import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+import React from "react"
+import s from "./Users.module.css"
+import userAvatar from "../../assets/images/user.jpg"
+import {NavLink} from "react-router-dom"
+import * as axios from "axios"
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageLimit)

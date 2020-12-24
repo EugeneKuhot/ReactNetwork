@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "./Header";
-import * as axios from "axios";
+import React from "react"
+import Header from "./Header"
+import * as axios from "axios"
 
 
 class headerAPIComponent extends React.Component {

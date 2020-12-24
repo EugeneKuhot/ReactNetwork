@@ -1,8 +1,8 @@
-import React from "react";
-import Users from "./Users";
-import Preloader from "../common/Preloader/Preloader";
-import {UsersAPI as usersAPI} from "../api/api";
-import {toggleFollowingProgress} from "../../Redux/usersReducer";
+import React from "react"
+import Users from "./Users"
+import Preloader from "../common/Preloader/Preloader"
+import {UsersAPI as usersAPI} from "../api/api"
+import {toggleFollowingProgress} from "../../Redux/usersReducer"
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
@@ -10,7 +10,7 @@ class UsersAPIComponent extends React.Component {
         usersAPI.getUsers(this.props.currentPage, this.props.pageLimit)
             .then(data => {
                 this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items);
+                this.props.setUsers(data.items)
                 this.props.setTotalUsersCount(data.totalCount)
             })
     }
