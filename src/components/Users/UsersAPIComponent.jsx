@@ -1,6 +1,7 @@
 import React from "react"
 import Users from "./Users"
 import Preloader from "../common/Preloader/Preloader"
+import {Redirect} from "react-router-dom";
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
@@ -13,7 +14,11 @@ class UsersAPIComponent extends React.Component {
     }
 
     render() {
+        if (!this.props.isAuth) {
+            return <Redirect to="/login" />
+        }
         return <>
+
             {this.props.isFetching ? <Preloader/> : null}
 
             <Users
