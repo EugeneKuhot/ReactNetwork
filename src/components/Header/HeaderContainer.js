@@ -1,6 +1,6 @@
 import HeaderAPIComponent from "./HeaderAPIComponent"
 import {connect} from "react-redux"
-import {setAuth} from "../../Redux/authReducer"
+import {authCheck} from "../../Redux/authReducer"
 
 
 let mapStateToProps = (state) => {
@@ -9,4 +9,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {setAuth})(HeaderAPIComponent)
+export default connect(mapStateToProps, {authCheck})(HeaderAPIComponent)

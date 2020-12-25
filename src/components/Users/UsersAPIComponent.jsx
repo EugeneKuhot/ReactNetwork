@@ -1,7 +1,6 @@
 import React from "react"
 import Users from "./Users"
 import Preloader from "../common/Preloader/Preloader"
-import {UsersAPI as usersAPI} from "../api/api";
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
@@ -10,6 +9,7 @@ class UsersAPIComponent extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.getUsers(pageNumber, this.props.pageLimit)
+        this.props.setCurrentPage(pageNumber)
     }
 
     render() {
