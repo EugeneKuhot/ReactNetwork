@@ -7,6 +7,7 @@ import {
     unfollow
 } from "../../Redux/usersReducer"
 import {WithAuthRedirect} from "../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 let mapStateToProps = (state) => {
@@ -20,9 +21,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-
-let AuthRedirectComponent = WithAuthRedirect(UsersAPIComponent)
-
-export default connect(mapStateToProps,
-    {follow, unfollow, setCurrentPage, getUsers})(AuthRedirectComponent)
+export default compose(
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, getUsers}),
+    WithAuthRedirect
+)(UsersAPIComponent)
 
