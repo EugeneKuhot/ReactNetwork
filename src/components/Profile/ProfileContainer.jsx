@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 import ProfileAPIComponent from "./ProfileAPIComponent"
 import {setProfile} from "../../Redux/profileReducer"
 import {withRouter} from "react-router-dom"
+import {WithAuthRedirect} from "../hoc/withAuthRedirect";
 
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile

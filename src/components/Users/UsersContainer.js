@@ -6,6 +6,7 @@ import {
     setCurrentPage,
     unfollow
 } from "../../Redux/usersReducer"
+import {WithAuthRedirect} from "../hoc/withAuthRedirect";
 
 
 let mapStateToProps = (state) => {
@@ -16,10 +17,12 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
-        isAuth: state.authData.isAuth
     }
 }
 
+
+let AuthRedirectComponent = WithAuthRedirect(UsersAPIComponent)
+
 export default connect(mapStateToProps,
-    {follow, unfollow, setCurrentPage, getUsers})(UsersAPIComponent)
+    {follow, unfollow, setCurrentPage, getUsers})(AuthRedirectComponent)
 
