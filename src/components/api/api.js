@@ -27,11 +27,26 @@ export const UsersAPI = {
         return (
             instance.delete(`follow/${userId}`).then(response => response.data)
         )
-    },
+    }
 
+}
+
+export const ProfileAPI = {
     getProfile(userId) {
         return (
             instance.get(`profile/${userId}`)
+        )
+    },
+
+    getStatus(userId) {
+        return (
+            instance.get(`profile/status/${userId}`)
+        )
+    },
+
+    updateStatus(status) {
+        return (
+            instance.put(`profile/status`, {status: status})
         )
     }
 }
