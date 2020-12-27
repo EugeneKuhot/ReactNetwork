@@ -1,35 +1,37 @@
 import React, {createRef} from 'react'
 import Post from './Post/Post'
 import s from './Posts.module.css'
+import {Field, reduxForm} from "redux-form";
 
 const Posts = (props) => {
 
     let postElements = props.postsData
         .map(p => <Post message={p.message} likes={p.likes} key={p.id}/>)
 
-    let newPost = React.createRef()
-
-    let addPost = () => {
-        props.addPost()
+    let addPost = (formData) => {
+        props.addPost(formData.newPostBody)
     }
-
-    let onPostChange = () => {
-        let text = newPost.current.value
-        props.updateNewPostTextAC(text)
-    }
-
 
     return (
         <ul>
             <li className={s.textareaWrap}>
-                <textarea ref={newPost} name="" id="" cols="30" rows="10" onChange={onPostChange}
-                          value={props.newPostText}/>
-                <button onClick={addPost}>Add Post</button>
+                <ProfilePostReduxForm onSubmit={addPost}/>
             </li>
 
             {postElements}
         </ul>
     )
 }
+
+const ProfilePostForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <Field component={`textarea`} name={`newPostBody`} placeholder={`Type here...`}/>
+        <button>Add Post</button>
+    </form>
+}
+
+const ProfilePostReduxForm = reduxForm({
+    form: `newPost`
+})(ProfilePostForm)
 
 export default Posts

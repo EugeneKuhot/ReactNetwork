@@ -1,7 +1,6 @@
 import {ProfileAPI} from "../components/api/api"
 
 const ADD_POST = 'ADD_POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 
@@ -10,7 +9,6 @@ let initialState = {
         {id: 1, message: 'Hi. How are you', likes: 12},
         {id: 2, message: 'Fine thnx', likes: 122}
     ],
-    newPostText: 'test',
     profile: null,
     status: ``
 }
@@ -20,19 +18,13 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST:
             let newPost = {
                 id: 6,
-                message: state.newPostText,
+                message: action.newPostText,
                 likes: 0
             }
 
             return {
                 ...state,
-                postsData: [...state.postsData, newPost],
-                newPostText: ''
-            }
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
+                postsData: [...state.postsData, newPost]
             }
         case SET_USER_PROFILE:
             return {
@@ -49,8 +41,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostAC = () => ({ type: ADD_POST })
-export const updateNewPostTextAC = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const addPostAC = (newPostText) => ({ type: ADD_POST, newPostText })
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 
@@ -62,7 +53,6 @@ export const setProfile = (userId) => {
         })
     }
 }
-
 export const getStatus = (userId) => {
     return (dispatch) => {
         ProfileAPI.getStatus(userId).then(response => {
@@ -70,7 +60,6 @@ export const getStatus = (userId) => {
         })
     }
 }
-
 export const updateStatus = (status) => {
     return (dispatch) => {
         ProfileAPI.updateStatus(status).then(response => {

@@ -4,7 +4,7 @@ import {Field, reduxForm} from "redux-form"
 const LoginPage = (props) => {
 
     const onSubmit = (formData) => {
-
+        alert(formData)
     }
 
     return <div>
@@ -15,7 +15,7 @@ const LoginPage = (props) => {
 }
 
 const LoginForm = (props) => {
-    return <form action="#" onSubmit={props.handleSubmit}>
+    return <form onSubmit={props.handleSubmit}>
         <div>
             <Field component={'input'} name={'login'} type="text" placeholder={'Login'}/>
         </div>
@@ -33,10 +33,7 @@ const LoginForm = (props) => {
     </form>
 }
 
-const LoginReduxForm = reduxForm({
-    form: 'login'
-})(LoginForm)
-
+const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 
 export default LoginPage
