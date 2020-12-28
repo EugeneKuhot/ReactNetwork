@@ -1,6 +1,6 @@
 import HeaderAPIComponent from "./HeaderAPIComponent"
 import {connect} from "react-redux"
-import {authCheck} from "../../Redux/authReducer"
+import {authCheck, logoutThunkCreator} from "../../Redux/authReducer"
 
 
 let mapStateToProps = (state) => {
@@ -9,4 +9,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {authCheck})(HeaderAPIComponent)
+export default connect(mapStateToProps, {authCheck, logoutThunkCreator})(HeaderAPIComponent)

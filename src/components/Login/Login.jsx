@@ -2,18 +2,25 @@ import React from "react"
 import {Field, reduxForm} from "redux-form"
 import {Input} from "../common/FormControls/FormControls";
 import {required} from "../../utils/validators";
+import {Redirect} from "react-router-dom";
 
 const LoginPage = (props) => {
-
     const onSubmit = (formData) => {
-        alert(formData)
+        props.loginThunkCreator(formData.email, formData.password, formData.rememberMe)
     }
 
-    return <div>
-        <h1>Login</h1>
+    if (props.isAuth) {
+       return <Redirect to={'/profile'}/>
+    }
 
-        <LoginReduxForm onSubmit={onSubmit}/>
-    </div>
+    return (
+        <div>
+            <h1>Login</h1>
+
+            <LoginReduxForm onSubmit={onSubmit}/>
+        </div>
+
+    )
 }
 
 const LoginForm = (props) => {
@@ -21,12 +28,12 @@ const LoginForm = (props) => {
         <div>
             <Field component={Input}
                    validate={[required]}
-                   name={'login'}
+                   name={'email'}
                    type="text"
                    placeholder={'Login'}/>
         </div>
         <div>
-            <Field component={'input'}
+            <Field component={Input}
                    validate={[required]}
                    name={'password'}
                    type="password"
