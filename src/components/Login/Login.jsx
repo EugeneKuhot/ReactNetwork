@@ -3,6 +3,7 @@ import {Field, reduxForm} from "redux-form"
 import {Input} from "../common/FormControls/FormControls";
 import {required} from "../../utils/validators";
 import {Redirect} from "react-router-dom";
+import s from "./../common/FormControls/FormControls.module.css";
 
 const LoginPage = (props) => {
     const onSubmit = (formData) => {
@@ -47,6 +48,10 @@ const LoginForm = (props) => {
         <div>
             <button>Submit</button>
         </div>
+
+        { props.error && <div className={s.summaryErrorBlock}>
+            {props.error}
+        </div>}
     </form>
 }
 

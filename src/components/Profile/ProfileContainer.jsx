@@ -7,7 +7,9 @@ import {withRouter} from "react-router-dom"
 
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    autorizedUserId: state.authData.id,
+    isAuth: state.authData.isAuth
 })
 
 let withURLDataContainerComponent = withRouter(ProfileAPIComponent)
