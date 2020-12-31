@@ -34,17 +34,15 @@ export const setAuth = (id, login, email, isAuth) => ({
     }
 })
 
-export const authCheck = () => {
-    return (dispatch) => {
-        AuthAPI.authCheck()
-            .then(response => {
-                if (response.resultCode === 0) {
-                    let {id, login, email} = response.data
-                    dispatch(setAuth(id, login, email, true))
-                }
+export const authCheck = () => (dispatch) => {
+    return AuthAPI.authCheck()
+        .then(response => {
+            if (response.resultCode === 0) {
+                let {id, login, email} = response.data
+                dispatch(setAuth(id, login, email, true))
+            }
 
-            })
-    }
+        })
 }
 
 export const loginThunkCreator = (email, password, rememberMe) => {
@@ -53,7 +51,7 @@ export const loginThunkCreator = (email, password, rememberMe) => {
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(authCheck())
-                }else {
+                } else {
                     let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some Error"
                     dispatch(stopSubmit('login', {_error: message}))
                 }
