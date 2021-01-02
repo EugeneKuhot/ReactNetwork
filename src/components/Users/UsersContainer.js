@@ -6,17 +6,23 @@ import {
     setCurrentPage,
     unfollow
 } from "../../Redux/usersReducer"
+import {
+    getCurrentPageSelector, getFollowingInProgressSelector, getIsFetchingSelector,
+    getPagesSelector,
+    getTotalUsersCountSelector,
+    getUsersSelector
+} from "../../Redux/usersSelectors";
 
 
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageLimit: state.usersPage.pages,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
+        users: getUsersSelector(state),
+        pageLimit: getPagesSelector(state),
+        totalUsersCount: getTotalUsersCountSelector(state),
+        currentPage: getCurrentPageSelector(state),
+        isFetching: getIsFetchingSelector(state),
+        followingInProgress: getFollowingInProgressSelector(state)
     }
 }
 
