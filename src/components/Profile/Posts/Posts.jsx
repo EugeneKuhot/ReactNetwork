@@ -1,4 +1,4 @@
-import React, {createRef} from 'react'
+import React, {PureComponent} from 'react'
 import Post from './Post/Post'
 import s from './Posts.module.css'
 import {Field, reduxForm} from "redux-form";
@@ -8,7 +8,7 @@ import {Textarea} from "../../common/FormControls/FormControls";
 const MAX_SYMBOLS_IN_POST = 10
 const postMaxLengthCreator = maxLengthCreator(MAX_SYMBOLS_IN_POST)
 
-const Posts = (props) => {
+const Posts = React.memo(props => {
 
     let postElements = props.postsData
         .map(p => <Post message={p.message} likes={p.likes} key={p.id}/>)
@@ -26,7 +26,7 @@ const Posts = (props) => {
             {postElements}
         </ul>
     )
-}
+});
 
 const ProfilePostForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
