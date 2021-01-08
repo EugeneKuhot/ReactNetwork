@@ -1,17 +1,17 @@
-import React from "react"
-import {connect} from "react-redux"
-import UsersAPIComponent from "./UsersAPIComponent"
+import React from 'react'
+import {connect} from 'react-redux'
+import UsersAPIComponent from './UsersAPIComponent'
 import {
     follow, getUsers,
     setCurrentPage,
     unfollow
-} from "../../Redux/usersReducer"
+} from '../../Redux/usersReducer'
 import {
     getCurrentPageSelector, getFollowingInProgressSelector, getIsFetchingSelector,
     getPagesSelector,
     getTotalUsersCountSelector,
     getUsersSelector
-} from "../../Redux/usersSelectors";
+} from '../../Redux/usersSelectors'
 
 
 

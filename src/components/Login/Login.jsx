@@ -1,16 +1,16 @@
-import React from "react"
-import {Field, reduxForm} from "redux-form"
-import {Input} from "../common/FormControls/FormControls";
-import {required} from "../../utils/validators";
-import {Redirect} from "react-router-dom";
-import s from "./../common/FormControls/FormControls.module.css";
+import React from 'react'
+import {Field, reduxForm} from 'redux-form'
+import {createField, Input} from '../common/FormControls/FormControls'
+import {required} from '../../utils/validators'
+import {Redirect} from 'react-router-dom'
+import s from './../common/FormControls/FormControls.module.css'
 
-const LoginPage = (props) => {
+const LoginPage = ({loginThunkCreator, isAuth}) => {
     const onSubmit = (formData) => {
-        props.loginThunkCreator(formData.email, formData.password, formData.rememberMe)
+        loginThunkCreator(formData.email, formData.password, formData.rememberMe)
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
        return <Redirect to={'/profile'}/>
     }
 
@@ -24,33 +24,21 @@ const LoginPage = (props) => {
     )
 }
 
-const LoginForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
-        <div>
-            <Field component={Input}
-                   validate={[required]}
-                   name={'email'}
-                   type="text"
-                   placeholder={'Login'}/>
-        </div>
-        <div>
-            <Field component={Input}
-                   validate={[required]}
-                   name={'password'}
-                   type="password"
-                   placeholder={'Password'}/>
-        </div>
+const LoginForm = ({handleSubmit, error}) => {
+    return <form onSubmit={handleSubmit}>
+            {createField(Input, [required], 'email', 'Login', 'text')}
+            {createField(Input, [required], 'password', 'Password', 'password')}
         <div>
             <label>
-                <Field component={Input} name={'rememberMe'} type="checkbox"/> Remember me
+                {createField(Input, [], 'rememberMe', '', 'checkbox')} Remember me
             </label>
         </div>
         <div>
             <button>Submit</button>
         </div>
 
-        { props.error && <div className={s.summaryErrorBlock}>
-            {props.error}
+        { error && <div className={s.summaryErrorBlock}>
+            {error}
         </div>}
     </form>
 }

@@ -14,7 +14,7 @@ let initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case ADD_POST:
             let newPost = {
                 id: 6,
@@ -41,34 +41,24 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostAC = (newPostText) => ({ type: ADD_POST, newPostText })
+export const addPostAC = (newPostText) => ({type: ADD_POST, newPostText})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 
-export const setProfile = (userId) => {
-    return (dispatch) => {
-
-        ProfileAPI.getProfile(userId).then(response => {
-            dispatch(setUserProfile(response.data))
-        })
-    }
+export const setProfile = (userId) => async (dispatch) => {
+    let response = await ProfileAPI.getProfile(userId)
+    dispatch(setUserProfile(response.data))
 }
-export const getStatus = (userId) => {
-    return (dispatch) => {
-        ProfileAPI.getStatus(userId).then(response => {
-            dispatch(setStatus(response.data))
-        })
-    }
+export const getStatus = (userId) => async (dispatch) => {
+    let response = await ProfileAPI.getStatus(userId)
+    dispatch(setStatus(response.data))
 }
-export const updateStatus = (status) => {
-    return (dispatch) => {
-        ProfileAPI.updateStatus(status).then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status))
-            }
-        })
+export const updateStatus = (status) => async (dispatch) => {
+    let response = await ProfileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status))
     }
-}
+ }
 
 
 export default profileReducer
