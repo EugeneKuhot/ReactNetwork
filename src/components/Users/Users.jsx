@@ -21,7 +21,7 @@ const Users = (props) => {
                                             follow={props.follow}/>)}
             </ul>
 
-            <Paggination totalUsersCount={props.totalUsersCount}
+            <Paggination totalItemsCount={props.totalUsersCount}
                          pageLimit={props.pageLimit}
                          currentPage={props.currentPage}
                          onPageChanged={props.onPageChanged}/>
