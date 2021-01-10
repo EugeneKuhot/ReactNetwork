@@ -2,10 +2,9 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem"
 import MessageItem from "./MessageItem/MessageItem"
-import {Redirect} from "react-router-dom";
-import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../common/FormControls/FormControls";
-import {maxLengthCreator, required} from "../../utils/validators";
+import {Field, reduxForm} from "redux-form"
+import {Textarea} from "../common/FormControls/FormControls"
+import {maxLengthCreator, required} from "../../utils/validators"
 
 
 const MAX_SYMBOLS_IN_MESSAGE = 10
