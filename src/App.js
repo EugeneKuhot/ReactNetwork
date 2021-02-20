@@ -1,11 +1,8 @@
 import React from 'react'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
-import News from './components/News/News'
-import Music from './components/Music/Music'
-import Settings from './components/Settings/Settings'
 import Footer from './components/Footer/Footer'
-import {BrowserRouter, Route, withRouter} from 'react-router-dom'
+import {HashRouter, Route, withRouter} from 'react-router-dom'
 import UsersContainer from './components/Users/UsersContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
 import LoginPage from './components/Login/LoginContainer'
@@ -14,10 +11,14 @@ import {compose} from 'redux'
 import {initializeApp} from './Redux/appReducer'
 import Preloader from './components/common/Preloader/Preloader'
 import store from "./Redux/redux-store"
-import {WithSuspense} from "./components/hoc/withSuspense";
+import {WithSuspense} from "./components/hoc/withSuspense"
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
+
+const Music = React.lazy(() => import('./components/Music/Music'))
+const News = React.lazy(() => import('./components/News/News'))
+const Settings = React.lazy(() => import('./components/Settings/Settings'))
 
 
 class App extends React.Component {
@@ -43,11 +44,10 @@ class App extends React.Component {
                             <Route path='/login' render={() =>
                                 <LoginPage/>
                             }/>
-                            <Route path='/news' component={News}/>
-                            <Route path='/music' component={Music}/>
-                            <Route path='/settings' component={Settings}/>
+                            <Route path='/news' render={WithSuspense(News)}/>
+                            <Route path='/music' render={WithSuspense(Music)}/>
+                            <Route path='/settings' render={WithSuspense(Settings)}/>
                         </div>
-
                         <Footer/>
                     </div>
                 </div>
@@ -68,11 +68,11 @@ let AppContainer = compose(
 
 let MainApp = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 

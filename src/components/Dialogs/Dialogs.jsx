@@ -17,7 +17,8 @@ const Dialogs = (props) => {
     let messagesElements = props.messagesData.map(m => <MessageItem textMessage={m.textMessage} key={m.id}/>)
 
     let sendMessage = (formData) => {
-        props.sendMessage(formData.newMessageBody);
+        props.sendMessage(formData.newMessageBody)
+        formData.newMessageBody = ''
     }
 
     return (

@@ -15,6 +15,7 @@ const Posts = React.memo(props => {
 
     let addPost = (formData) => {
         props.addPost(formData.newPostBody)
+        formData.newPostBody = ''
     }
 
     return (
