@@ -50,6 +50,12 @@ export const ProfileAPI = {
         )
     },
 
+    updateProfileData(formData) {
+        return (
+            instance.put(`profile`, formData)
+        )
+    },
+
     sendPhoto(photoFile) {
         const formData = new FormData()
         formData.append('image', photoFile)

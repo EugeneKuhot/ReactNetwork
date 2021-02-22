@@ -76,4 +76,6 @@ let MainApp = () => {
     )
 }
 
+window.state = store.getState();
+
 export default MainApp

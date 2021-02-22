@@ -4,6 +4,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userAvatar from "../../../assets/images/user.jpg";
 import ProfileDataForm from "./ProfileDataForm";
+import ProfileData from "./ProflileData";
 
 const ProfileInfo = (props) => {
     let [editMode, setEditMode] = useState(false)
@@ -19,7 +20,8 @@ const ProfileInfo = (props) => {
     }
 
     const onSubmit = (formData) => {
-        console.log(formData)
+        props.saveProfileData(formData)
+        /*setEditMode(false)*/
     }
 
     return (
@@ -31,7 +33,7 @@ const ProfileInfo = (props) => {
             <div>
                 <ProfileStatusWithHooks statuse={props.status} updateStatus={props.updateStatus}/>
                 <h3>{props.profile.aboutMe}</h3>
-                {editMode ? <ProfileDataForm profile={props.profile} onSubmit={onSubmit}/> : <ProfileData profile={props.profile}
+                {editMode ? <ProfileDataForm initialValues={props.profile} profile={props.profile} onSubmit={onSubmit}/> : <ProfileData profile={props.profile}
                                                                                       isOwner={props.isOwner}
                                                                                       editMode={() => {setEditMode(true)}}
                                                                                       />}
@@ -41,29 +43,6 @@ const ProfileInfo = (props) => {
     )
 }
 
-const ProfileData = (props) => {
-    return (
-        <ul>
-            {props.isOwner && <li><button onClick={props.editMode}>Edit</button></li>}
-            <li>Name: {props.profile.fullName}</li>
-            <li>Looking for a job: {props.profile.lookingForJob ? <span>Yes</span> : <span>No</span>}</li>
-            <li>About me: {props.profile.lookingForAJobDescription}</li>
 
-            <li>Contacts:</li>
-            <li>
-                {Object.keys(props.profile.contacts).map(key => {
-
-                    return <Contact key={key} contactTitle={key}
-                                    contactValue={props.profile.contacts[key]}/>
-                })}
-            </li>
-        </ul>
-    )
-}
-
-
-const Contact = ({contactTitle, contactValue}) => {
-    return <div>{contactTitle}: {contactValue}</div>
-}
 
 export default ProfileInfo
