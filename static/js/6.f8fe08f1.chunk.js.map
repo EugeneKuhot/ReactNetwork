@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/News/News.jsx"],"names":["News"],"mappings":"6IAQeA,UANF,WACT,OACI","file":"static/js/6.f8fe08f1.chunk.js","sourcesContent":["import React from 'react'\r\n\r\nconst News = () => {\r\n    return (\r\n        <div>News</div>\r\n    )\r\n}\r\n\r\nexport default News"],"sourceRoot":""}
