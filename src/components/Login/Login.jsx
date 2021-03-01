@@ -5,7 +5,7 @@ import {required} from '../../utils/validators'
 import {Redirect} from 'react-router-dom'
 import s from './../common/FormControls/FormControls.module.css'
 
-const LoginPage = ({loginThunkCreator, isAuth}) => {
+const LoginPage = ({loginThunkCreator, isAuth, captcha}) => {
     const onSubmit = (formData) => {
         loginThunkCreator(formData.email, formData.password, formData.rememberMe)
     }
@@ -18,13 +18,13 @@ const LoginPage = ({loginThunkCreator, isAuth}) => {
         <div>
             <h1>Login</h1>
 
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captcha={captcha}/>
         </div>
 
     )
 }
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captcha}) => {
     return <form onSubmit={handleSubmit}>
             {createField(Input, [required], 'email', 'Login', 'text')}
             {createField(Input, [required], 'password', 'Password', 'password')}
@@ -33,6 +33,9 @@ const LoginForm = ({handleSubmit, error}) => {
                 {createField(Input, [], 'rememberMe', '', 'checkbox')} Remember me
             </label>
         </div>
+
+        {captcha && <img src={captcha}/>}
+
         <div>
             <button>Submit</button>
         </div>

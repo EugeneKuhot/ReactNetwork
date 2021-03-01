@@ -1,14 +1,16 @@
-import {AuthAPI} from "../components/api/api";
+import {AuthAPI, SecurityAPI} from "../components/api/api";
 import {stopSubmit} from "redux-form";
 
 
 const SET_AUTH = 'auth/SET_AUTH'
+const SET_CAPTCHA = 'auth/SET_CAPTCHA'
 
 let initialState = {
     id: null,
     login: null,
     email: null,
-    isAuth: false
+    isAuth: false,
+    captchaUrl: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -17,6 +19,11 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data
+            }
+        case SET_CAPTCHA:
+            return {
+                ...state,
+                ...action.captchaUrl
             }
 
         default:
@@ -31,6 +38,10 @@ export const setAuth = (id, login, email, isAuth) => ({
         email,
         isAuth
     }
+})
+
+export const setCaptchaImg = (captchaImg) => ({
+    type: SET_CAPTCHA, captchaUrl: captchaImg
 })
 
 export const authCheck = () => async (dispatch) => {
@@ -48,6 +59,9 @@ export const loginThunkCreator = (email, password, rememberMe) => async (dispatc
     if (response.data.resultCode === 0) {
         dispatch(authCheck())
     } else {
+        if (response.data.resultCode === 10) {
+            dispatch(getCaptchaURL())
+        }
         let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some Error"
         dispatch(stopSubmit('login', {_error: message}))
     }
@@ -59,6 +73,12 @@ export const logoutThunkCreator = () => async (dispatch) => {
     if (response.resultCode === 0) {
         dispatch(setAuth(null, null, null, false))
     }
+}
+
+export const getCaptchaURL = () => async (dispatch) => {
+    const response = await SecurityAPI.getCaptchaURL()
+    const captchaUrl = response.data.url
+    dispatch(setCaptchaImg(captchaUrl))
 }
 
 export default authReducer

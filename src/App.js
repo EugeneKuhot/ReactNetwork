@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
-import {HashRouter, Route, withRouter} from 'react-router-dom'
+import {HashRouter, Redirect, Route, withRouter} from 'react-router-dom'
 import UsersContainer from './components/Users/UsersContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
 import LoginPage from './components/Login/LoginContainer'
@@ -36,17 +36,15 @@ class App extends React.Component {
                         <HeaderContainer/>
                         <Navbar/>
                         <div className='appWrapperContent'>
+                            <Route exact path='/' render={() => <Redirect to={'/profile'}/>}/>
                             <Route path='/profile/:userId?' render={WithSuspense(ProfileContainer)}/>
                             <Route path='/dialogs' render={WithSuspense(DialogsContainer)}/>
-                            <Route path='/users' render={() =>
-                                <UsersContainer/>
-                            }/>
-                            <Route path='/login' render={() =>
-                                <LoginPage/>
-                            }/>
+                            <Route path='/users' render={() => <UsersContainer/>}/>
+                            <Route path='/login' render={() =><LoginPage/>}/>
                             <Route path='/news' render={WithSuspense(News)}/>
                             <Route path='/music' render={WithSuspense(Music)}/>
                             <Route path='/settings' render={WithSuspense(Settings)}/>
+                            <Route path='*' render={() => {return <div>404 Not found</div>}}/>
                         </div>
                         <Footer/>
                     </div>
